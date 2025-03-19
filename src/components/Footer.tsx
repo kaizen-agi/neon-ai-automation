@@ -1,5 +1,5 @@
 
-import { Zap } from "lucide-react";
+import { Zap, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,9 +39,28 @@ const Footer = () => {
           </div>
         </div>
         
+        {/* Social Media Icons */}
+        <div className="flex justify-center gap-6 mb-8">
+          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
+            <Facebook className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
+            <Twitter className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
+            <Instagram className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
+            <Linkedin className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
+            <Youtube className="h-6 w-6" />
+          </a>
+        </div>
+        
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/50 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} KaizenAGI. All rights reserved.
+          <p className="text-white/50 text-sm mb-4 md:mb-0 text-center md:text-left">
+            © 2025-2030 Designed by KaizenAGI | All Rights Reserved | Born in Paris | Improved in Dubai
           </p>
           
           <div className="flex gap-6">

@@ -1,3 +1,4 @@
+
 import { Heart, Star, Dumbbell, TrendingUp, UserPlus, Rocket, Lightbulb, Zap, RefreshCw } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
@@ -177,10 +178,12 @@ const AISavingsBenefits = () => {
         <div className="space-y-16">
           {Object.entries(categoryHeadings).map(([category, { emoji, title }]) => (
             <div key={category} className="space-y-6">
-              <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
-                <span className="text-2xl">{emoji}</span>
-                <span>{title}</span>
-              </h3>
+              {category !== 'personal' && (
+                <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
+                  <span className="text-2xl">{emoji}</span>
+                  <span>{title}</span>
+                </h3>
+              )}
               {renderBenefitsByCategory(category as 'personal' | 'business' | 'team')}
             </div>
           ))}

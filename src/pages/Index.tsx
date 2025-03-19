@@ -10,6 +10,7 @@ import Summary from "@/components/Summary";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import AISavingsBenefits from "@/components/AISavingsBenefits";
+import FloatingWidgets from "@/components/FloatingWidgets";
 
 const Index = () => {
   // Initialize intersection observer for animations
@@ -59,6 +60,7 @@ const Index = () => {
       <Summary />
       <CTA />
       <Footer />
+      <FloatingWidgets />
     </div>
   );
 };

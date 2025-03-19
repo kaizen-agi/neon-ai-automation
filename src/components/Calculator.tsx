@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -10,6 +9,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { 
   ArrowRight, 
   DollarSign, 
@@ -43,6 +43,7 @@ const Calculator = () => {
   const [frequency, setFrequency] = useState<number>(10);
   const [frequencyUnit, setFrequencyUnit] = useState<FrequencyUnit>("daily");
   const [implementationDays, setImplementationDays] = useState<number>(30);
+  const [taskDescription, setTaskDescription] = useState<string>("");
   const [savings, setSavings] = useState({
     oneYear: { hours: 0, cost: 0 },
     threeYears: { hours: 0, cost: 0 },
@@ -51,7 +52,6 @@ const Calculator = () => {
     fullTimeEquivalent: 0,
   });
 
-  // Update hourly rate when region changes
   useEffect(() => {
     const region = regions.find((r) => r.id === selectedRegion);
     if (region) {
@@ -59,34 +59,26 @@ const Calculator = () => {
     }
   }, [selectedRegion]);
 
-  // Calculate savings whenever inputs change
   useEffect(() => {
-    // Convert time saved to hours
     let timeSavedInHours = timeSaved;
     if (timeUnit === "minutes") timeSavedInHours = timeSaved / 60;
     if (timeUnit === "days") timeSavedInHours = timeSaved * 8;
 
-    // Calculate frequency in times per year
     let frequencyPerYear = frequency;
-    if (frequencyUnit === "daily") frequencyPerYear = frequency * 250; // Business days in a year
+    if (frequencyUnit === "daily") frequencyPerYear = frequency * 250;
     if (frequencyUnit === "weekly") frequencyPerYear = frequency * 52;
     if (frequencyUnit === "monthly") frequencyPerYear = frequency * 12;
 
-    // Calculate hours saved per year
     const hoursSavedPerYear = timeSavedInHours * frequencyPerYear;
     
-    // Calculate cost savings
     const costSavedPerYear = hoursSavedPerYear * hourlyRate;
     
-    // Implementation time in days
     const implementationTimeInDays = implementationDays;
     
-    // Break-even calculation (in days)
-    const dailySavings = costSavedPerYear / 250; // Business days in a year
-    const implementationCost = implementationTimeInDays * 8 * hourlyRate; // Assuming 8 hours per day
+    const dailySavings = costSavedPerYear / 250;
+    const implementationCost = implementationTimeInDays * 8 * hourlyRate;
     const breakEvenDays = Math.ceil(implementationCost / dailySavings);
     
-    // Full-time equivalent (based on 2,000 hours per year)
     const fullTimeEquivalent = hoursSavedPerYear / 2000;
     
     setSavings({
@@ -109,7 +101,6 @@ const Calculator = () => {
 
   return (
     <section id="calculator" className="py-24 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-neon-purple/20 rounded-full filter blur-[120px]"></div>
       </div>
@@ -133,6 +124,19 @@ const Calculator = () => {
               </h3>
 
               <div className="space-y-6">
+                <div>
+                  <Label htmlFor="taskDescription" className="text-white mb-2 block">
+                    Describe your task: What process do you want to optimize?
+                  </Label>
+                  <Textarea
+                    id="taskDescription"
+                    placeholder="e.g., Automating lead qualification, Handling customer support inquiries, Managing appointment scheduling"
+                    value={taskDescription}
+                    onChange={(e) => setTaskDescription(e.target.value)}
+                    className="bg-white/5 border-white/10 text-white min-h-[100px]"
+                  />
+                </div>
+
                 <div>
                   <Label htmlFor="region" className="text-white mb-2 block">
                     Select Your Region
@@ -263,7 +267,7 @@ const Calculator = () => {
 
             <div>
               <h3 className="text-xl font-bold mb-6 text-white">
-                Your AI Automation ROI
+                How Much AI Saves You—In Time & Money
               </h3>
 
               <div className="space-y-6">
