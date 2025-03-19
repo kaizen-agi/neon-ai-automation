@@ -1,5 +1,4 @@
-
-import { Heart, Star, Yoga, TrendingUp, UserPlus, Rocket, Lightbulb, Zap, RefreshCw } from "lucide-react";
+import { Heart, Star, Dumbbell, TrendingUp, UserPlus, Rocket, Lightbulb, Zap, RefreshCw } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 type BenefitCard = {
@@ -29,7 +28,7 @@ const AISavingsBenefits = () => {
     },
     {
       id: "reduce-stress",
-      icon: <Yoga className="h-6 w-6 text-neon-purple" />,
+      icon: <Dumbbell className="h-6 w-6 text-neon-purple" />,
       title: "Reduce stress & improve work-life balance",
       description: "Let AI handle the tedious work while you focus on what matters.",
       category: "personal",
