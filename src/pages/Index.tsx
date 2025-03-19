@@ -9,6 +9,7 @@ import UseCases from "@/components/UseCases";
 import Summary from "@/components/Summary";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import AISavingsBenefits from "@/components/AISavingsBenefits";
 
 const Index = () => {
   // Initialize intersection observer for animations
@@ -22,7 +23,10 @@ const Index = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-slide-up');
-          entry.target.style.opacity = '1';
+          // Fix TypeScript error - use instanceof HTMLElement check
+          if (entry.target instanceof HTMLElement) {
+            entry.target.style.opacity = '1';
+          }
           observer.unobserve(entry.target);
         }
       });
@@ -31,7 +35,10 @@ const Index = () => {
     // Select elements to animate
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     animateElements.forEach(el => {
-      el.style.opacity = '0';
+      // Fix TypeScript error - use instanceof HTMLElement check
+      if (el instanceof HTMLElement) {
+        el.style.opacity = '0';
+      }
       observer.observe(el);
     });
 
@@ -47,6 +54,7 @@ const Index = () => {
       <Solutions />
       <Testimonials />
       <Calculator />
+      <AISavingsBenefits />
       <UseCases />
       <Summary />
       <CTA />
