@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors
+				neon: {
+					purple: '#8B5CF6',
+					purple50: 'rgba(139, 92, 246, 0.5)',
+					purple20: 'rgba(139, 92, 246, 0.2)',
+					purple10: 'rgba(139, 92, 246, 0.1)',
+					teal: '#0EA5E9',
+					orange: '#F97316'
 				}
 			},
 			borderRadius: {
@@ -84,11 +94,61 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px 5px rgba(139, 92, 246, 0.4)'
+					},
+					'50%': { 
+						boxShadow: '0 0 30px 10px rgba(139, 92, 246, 0.7)'
+					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(20px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'slide-right': {
+					'0%': { transform: 'translateX(-20px)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.9)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'count-up': {
+					'0%': { content: '"0"' },
+					'100%': { content: 'attr(data-value)' }
+				},
+				'flicker': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-glow': 'pulse-glow 2s infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'slide-up': 'slide-up 0.6s ease-out',
+				'slide-right': 'slide-right 0.6s ease-out',
+				'scale-in': 'scale-in 0.4s ease-out',
+				'count-up': 'count-up 2s forwards',
+				'flicker': 'flicker 3s infinite'
+			},
+			boxShadow: {
+				'neon-purple': '0 0 20px 5px rgba(139, 92, 246, 0.4)',
+				'neon-purple-lg': '0 0 30px 10px rgba(139, 92, 246, 0.6)',
+				'neon-teal': '0 0 20px 5px rgba(14, 165, 233, 0.4)'
+			},
+			dropShadow: {
+				'neon-text': '0 0 6px rgba(139, 92, 246, 0.6)'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif']
 			}
 		}
 	},
