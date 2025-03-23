@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -20,7 +19,8 @@ import {
   ChartContainer, 
   ChartTooltip, 
   ChartTooltipContent,
-  ChartLegend
+  ChartLegend,
+  ChartLegendContent
 } from "@/components/ui/chart";
 import { 
   Bar, 
@@ -77,10 +77,8 @@ const Calculator = () => {
     roi: 0,
   });
 
-  // For yearly savings chart
   const [yearlySavingsData, setYearlySavingsData] = useState<Array<{name: string, netSavings: number, costOfAI: number}>>([]);
   
-  // For productivity breakdown chart
   const [productivityData, setProductivityData] = useState<Array<{name: string, value: number, fill: string}>>([]);
 
   useEffect(() => {
@@ -134,7 +132,6 @@ const Calculator = () => {
       roi: roi,
     });
 
-    // Prepare data for charts
     setYearlySavingsData([
       { name: 'Year 1', netSavings: costSavedPerYear, costOfAI: costOfAI / 3 },
       { name: 'Year 2', netSavings: costSavedPerYear, costOfAI: costOfAI / 3 },
@@ -529,7 +526,10 @@ const Calculator = () => {
                     </HoverCard>
                   </div>
                   <div className="h-60">
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ChartContainer config={{
+                      "netSavings": { label: "Net Savings", color: "#7C4DFF" },
+                      "costOfAI": { label: "Cost of AI", color: "#D946EF" }
+                    }}>
                       <BarChart
                         data={yearlySavingsData}
                         margin={{ top: 5, right: 5, left: 5, bottom: 20 }}
@@ -541,9 +541,9 @@ const Calculator = () => {
                         />
                         <Bar dataKey="netSavings" stackId="a" fill="#7C4DFF" name="Net Savings" />
                         <Bar dataKey="costOfAI" stackId="a" fill="#D946EF" name="Cost of AI" />
-                        <ChartLegend />
+                        <ChartLegend content={<ChartLegendContent />} />
                       </BarChart>
-                    </ResponsiveContainer>
+                    </ChartContainer>
                   </div>
                 </div>
 
@@ -564,7 +564,10 @@ const Calculator = () => {
                     </HoverCard>
                   </div>
                   <div className="h-60">
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ChartContainer config={{
+                      "Productivity": { label: "Productivity", color: "#7DD3FC" },
+                      "Effectiveness": { label: "Effectiveness", color: "#0284C7" }
+                    }}>
                       <PieChart>
                         <Pie
                           data={productivityData}
@@ -584,7 +587,7 @@ const Calculator = () => {
                           content={<ChartTooltipContent />} 
                         />
                       </PieChart>
-                    </ResponsiveContainer>
+                    </ChartContainer>
                   </div>
                 </div>
               </div>
