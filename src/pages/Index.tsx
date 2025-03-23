@@ -11,6 +11,7 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import AISavingsBenefits from "@/components/AISavingsBenefits";
 import FloatingWidgets from "@/components/FloatingWidgets";
+import LeadForm from "@/components/LeadForm";
 
 const Index = () => {
   // Initialize intersection observer for animations
@@ -58,6 +59,7 @@ const Index = () => {
       <AISavingsBenefits />
       <UseCases />
       <Summary />
+      <LeadForm />
       <CTA />
       <Footer />
       <FloatingWidgets />

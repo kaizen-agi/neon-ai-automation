@@ -1,74 +1,77 @@
 
-import { Zap, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import React from "react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="py-12 border-t border-white/10 relative">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 left-0 w-96 h-32 bg-neon-purple/10 rounded-full filter blur-[80px]"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <div className="mb-6 md:mb-0">
-            <a href="/" className="flex items-center">
-              <Zap className="h-6 w-6 text-neon-purple mr-2" />
-              <span className="text-xl font-bold text-gradient">KaizenAGI</span>
-            </a>
+    <footer className="bg-[#090A10] py-12 relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-10">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-white">KaizenAGI</h3>
+            <p className="text-white/70 max-w-xs">
+              Transforming businesses with AI solutions that drive efficiency, growth, and innovation.
+            </p>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-8">
-            <a href="#solutions" className="text-white/70 hover:text-white transition-colors">
-              AI Solutions
-            </a>
-            <a href="#testimonials" className="text-white/70 hover:text-white transition-colors">
-              Success Stories
-            </a>
-            <a href="#calculator" className="text-white/70 hover:text-white transition-colors">
-              ROI Calculator
-            </a>
-            <a href="#use-cases" className="text-white/70 hover:text-white transition-colors">
-              Use Cases
-            </a>
-            <a href="https://kaizenagi.com" target="_blank" rel="noopener noreferrer" className="text-neon-purple hover:text-neon-purple/80 transition-colors">
-              Book a Call
-            </a>
+          <div className="space-y-4">
+            <h4 className="text-lg font-medium text-white">Solutions</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Document Processing</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Customer Support</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Data Analysis</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Process Automation</a></li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="text-lg font-medium text-white">Company</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">About Us</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Careers</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Blog</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="text-lg font-medium text-white">Resources</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Documentation</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Guides</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">Support</a></li>
+              <li><a href="#" className="text-white/70 hover:text-neon-purple transition-colors">API</a></li>
+            </ul>
           </div>
         </div>
         
-        {/* Social Media Icons */}
-        <div className="flex justify-center gap-6 mb-8">
-          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
-            <Facebook className="h-6 w-6" />
-          </a>
-          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
-            <Twitter className="h-6 w-6" />
-          </a>
-          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
-            <Instagram className="h-6 w-6" />
-          </a>
-          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
-            <Linkedin className="h-6 w-6" />
-          </a>
-          <a href="#" className="text-white/70 hover:text-neon-purple transition-colors shadow-sm hover:shadow-neon-purple rounded-full p-2">
-            <Youtube className="h-6 w-6" />
-          </a>
-        </div>
-        
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/50 text-sm mb-4 md:mb-0 text-center md:text-left">
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white/50 text-sm mb-4 md:mb-0">
             © 2025-2030 Designed by KaizenAGI | All Rights Reserved | Born in Paris | Improved in Dubai
           </p>
           
-          <div className="flex gap-6">
-            <a href="#" className="text-white/50 text-sm hover:text-white transition-colors">
-              Privacy Policy
+          <div className="flex space-x-4">
+            <a href="#" className="text-white/50 hover:text-neon-purple transition-colors shadow-neon-purple hover:shadow-xl">
+              <Facebook className="h-5 w-5" />
+              <span className="sr-only">Facebook</span>
             </a>
-            <a href="#" className="text-white/50 text-sm hover:text-white transition-colors">
-              Terms of Service
+            <a href="#" className="text-white/50 hover:text-neon-purple transition-colors shadow-neon-purple hover:shadow-xl">
+              <Twitter className="h-5 w-5" />
+              <span className="sr-only">Twitter</span>
+            </a>
+            <a href="#" className="text-white/50 hover:text-neon-purple transition-colors shadow-neon-purple hover:shadow-xl">
+              <Instagram className="h-5 w-5" />
+              <span className="sr-only">Instagram</span>
+            </a>
+            <a href="#" className="text-white/50 hover:text-neon-purple transition-colors shadow-neon-purple hover:shadow-xl">
+              <Linkedin className="h-5 w-5" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+            <a href="#" className="text-white/50 hover:text-neon-purple transition-colors shadow-neon-purple hover:shadow-xl">
+              <Youtube className="h-5 w-5" />
+              <span className="sr-only">YouTube</span>
             </a>
           </div>
         </div>

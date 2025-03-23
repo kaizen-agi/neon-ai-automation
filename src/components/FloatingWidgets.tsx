@@ -1,49 +1,51 @@
 
-import { Mail, Phone } from "lucide-react";
-import { useState } from "react";
+import React from "react";
+import { Mail, MessageCircle } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const FloatingWidgets = () => {
-  const [isHoveringEmail, setIsHoveringEmail] = useState(false);
-  const [isHoveringPhone, setIsHoveringPhone] = useState(false);
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/971585812278", "_blank");
+  };
+
+  const handleEmailClick = () => {
+    window.open("mailto:kaizencare@kaizenagi.com", "_blank");
+  };
 
   return (
-    <div className="fixed right-6 bottom-24 z-40 flex flex-col gap-4">
-      {/* Email Widget */}
-      <div className="relative">
-        <a 
-          href="mailto:kaizencare@kaizenagi.com"
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-neon-purple shadow-neon-purple transition-all duration-300 hover:shadow-neon-purple-lg"
-          onMouseEnter={() => setIsHoveringEmail(true)}
-          onMouseLeave={() => setIsHoveringEmail(false)}
-        >
-          <Mail className="text-white h-6 w-6" />
-        </a>
-        
-        {isHoveringEmail && (
-          <div className="absolute right-14 top-2 bg-black/80 text-white px-3 py-2 rounded-lg backdrop-blur-sm border border-neon-purple/30 shadow-neon-purple whitespace-nowrap">
-            kaizencare@kaizenagi.com
-          </div>
-        )}
-      </div>
+    <TooltipProvider>
+      <div className="fixed right-6 bottom-24 z-50 flex flex-col gap-4">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={handleEmailClick}
+              className="w-14 h-14 rounded-full bg-neon-purple flex items-center justify-center shadow-neon-purple animate-pulse-glow transition-transform hover:scale-110"
+              aria-label="Email us"
+            >
+              <Mail className="h-6 w-6 text-white" />
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="left">
+            <p>Email: kaizencare@kaizenagi.com</p>
+          </TooltipContent>
+        </Tooltip>
 
-      {/* WhatsApp Widget */}
-      <div className="relative">
-        <a 
-          href="tel:+971585812278"
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-neon-purple shadow-neon-purple transition-all duration-300 hover:shadow-neon-purple-lg"
-          onMouseEnter={() => setIsHoveringPhone(true)}
-          onMouseLeave={() => setIsHoveringPhone(false)}
-        >
-          <Phone className="text-white h-6 w-6" />
-        </a>
-        
-        {isHoveringPhone && (
-          <div className="absolute right-14 top-2 bg-black/80 text-white px-3 py-2 rounded-lg backdrop-blur-sm border border-neon-purple/30 shadow-neon-purple whitespace-nowrap">
-            +971-58-58-12278
-          </div>
-        )}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={handleWhatsAppClick}
+              className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-md transition-transform hover:scale-110"
+              aria-label="WhatsApp us"
+            >
+              <MessageCircle className="h-6 w-6 text-white" />
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="left">
+            <p>WhatsApp: +971-58-58-12278</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
-    </div>
+    </TooltipProvider>
   );
 };
 
