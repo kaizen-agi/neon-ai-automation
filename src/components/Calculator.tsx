@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -27,7 +28,6 @@ import {
   BarChart, 
   XAxis, 
   YAxis, 
-  ResponsiveContainer,
   PieChart,
   Pie,
   Cell
@@ -429,6 +429,50 @@ const Calculator = () => {
                     />
                   </div>
                 </div>
+
+                <div className="glassmorphism rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-white font-semibold">Gross savings breakdown</span>
+                    <HoverCard>
+                      <HoverCardTrigger asChild>
+                        <Button variant="ghost" size="icon" className="h-7 w-7">
+                          <Info className="h-4 w-4 text-white/50" />
+                        </Button>
+                      </HoverCardTrigger>
+                      <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
+                        <p className="text-sm">
+                          Distribution of savings across different benefit areas
+                        </p>
+                      </HoverCardContent>
+                    </HoverCard>
+                  </div>
+                  <div className="h-60">
+                    <ChartContainer config={{
+                      "Productivity": { label: "Productivity", color: "#7DD3FC" },
+                      "Effectiveness": { label: "Effectiveness", color: "#0284C7" }
+                    }}>
+                      <PieChart>
+                        <Pie
+                          data={productivityData}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={60}
+                          outerRadius={80}
+                          paddingAngle={5}
+                          dataKey="value"
+                          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        >
+                          {productivityData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.fill} />
+                          ))}
+                        </Pie>
+                        <ChartTooltip 
+                          content={<ChartTooltipContent />} 
+                        />
+                      </PieChart>
+                    </ChartContainer>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -508,87 +552,41 @@ const Calculator = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div className="glassmorphism rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-white font-semibold">3-year savings</span>
-                    <HoverCard>
-                      <HoverCardTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-7 w-7">
-                          <Info className="h-4 w-4 text-white/50" />
-                        </Button>
-                      </HoverCardTrigger>
-                      <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
-                        <p className="text-sm">
-                          Year-by-year breakdown of savings vs. cost
-                        </p>
-                      </HoverCardContent>
-                    </HoverCard>
-                  </div>
-                  <div className="h-60">
-                    <ChartContainer config={{
-                      "netSavings": { label: "Net Savings", color: "#7C4DFF" },
-                      "costOfAI": { label: "Cost of AI", color: "#D946EF" }
-                    }}>
-                      <BarChart
-                        data={yearlySavingsData}
-                        margin={{ top: 5, right: 5, left: 5, bottom: 20 }}
-                      >
-                        <XAxis dataKey="name" stroke="#8884d8" />
-                        <YAxis stroke="#8884d8" />
-                        <ChartTooltip 
-                          content={<ChartTooltipContent />} 
-                        />
-                        <Bar dataKey="netSavings" stackId="a" fill="#7C4DFF" name="Net Savings" />
-                        <Bar dataKey="costOfAI" stackId="a" fill="#D946EF" name="Cost of AI" />
-                        <ChartLegend content={<ChartLegendContent />} />
-                      </BarChart>
-                    </ChartContainer>
-                  </div>
+              <div className="glassmorphism rounded-xl p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-white font-semibold">3-year savings</span>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-7 w-7">
+                        <Info className="h-4 w-4 text-white/50" />
+                      </Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
+                      <p className="text-sm">
+                        Year-by-year breakdown of savings vs. cost
+                      </p>
+                    </HoverCardContent>
+                  </HoverCard>
                 </div>
-
-                <div className="glassmorphism rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-white font-semibold">Gross savings breakdown</span>
-                    <HoverCard>
-                      <HoverCardTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-7 w-7">
-                          <Info className="h-4 w-4 text-white/50" />
-                        </Button>
-                      </HoverCardTrigger>
-                      <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
-                        <p className="text-sm">
-                          Distribution of savings across different benefit areas
-                        </p>
-                      </HoverCardContent>
-                    </HoverCard>
-                  </div>
-                  <div className="h-60">
-                    <ChartContainer config={{
-                      "Productivity": { label: "Productivity", color: "#7DD3FC" },
-                      "Effectiveness": { label: "Effectiveness", color: "#0284C7" }
-                    }}>
-                      <PieChart>
-                        <Pie
-                          data={productivityData}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={60}
-                          outerRadius={80}
-                          paddingAngle={5}
-                          dataKey="value"
-                          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                        >
-                          {productivityData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.fill} />
-                          ))}
-                        </Pie>
-                        <ChartTooltip 
-                          content={<ChartTooltipContent />} 
-                        />
-                      </PieChart>
-                    </ChartContainer>
-                  </div>
+                <div className="h-60">
+                  <ChartContainer config={{
+                    "netSavings": { label: "Net Savings", color: "#7C4DFF" },
+                    "costOfAI": { label: "Cost of AI", color: "#D946EF" }
+                  }}>
+                    <BarChart
+                      data={yearlySavingsData}
+                      margin={{ top: 5, right: 5, left: 5, bottom: 20 }}
+                    >
+                      <XAxis dataKey="name" stroke="#8884d8" />
+                      <YAxis stroke="#8884d8" />
+                      <ChartTooltip 
+                        content={<ChartTooltipContent />} 
+                      />
+                      <Bar dataKey="netSavings" stackId="a" fill="#7C4DFF" name="Net Savings" />
+                      <Bar dataKey="costOfAI" stackId="a" fill="#D946EF" name="Cost of AI" />
+                      <ChartLegend content={<ChartLegendContent />} />
+                    </BarChart>
+                  </ChartContainer>
                 </div>
               </div>
 
