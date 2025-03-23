@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -106,6 +105,8 @@ const Calculator = () => {
     
     const dailySavings = costSavedPerYear / 250;
     const implementationCost = implementationTimeInDays * 8 * hourlyRate;
+    
+    // Use one-time cost of AI (not distributed across years in calculations)
     const totalCost = costOfAI + implementationCost;
     const breakEvenDays = Math.ceil(totalCost / dailySavings);
     
@@ -132,6 +133,7 @@ const Calculator = () => {
       roi: roi,
     });
 
+    // Distribute AI cost visualization across the chart but keep the calculation as one-time
     setYearlySavingsData([
       { name: 'Year 1', netSavings: costSavedPerYear, costOfAI: costOfAI / 3 },
       { name: 'Year 2', netSavings: costSavedPerYear, costOfAI: costOfAI / 3 },
@@ -402,7 +404,7 @@ const Calculator = () => {
                 <div>
                   <div className="flex items-center justify-between">
                     <Label htmlFor="costOfAI" className="text-white mb-2 block">
-                      Cost of AI Solution (USD)
+                      Cost of AI Solution (USD) <span className="text-neon-purple font-medium">(One-time cost)</span>
                     </Label>
                     <HoverCard>
                       <HoverCardTrigger asChild>
@@ -413,7 +415,7 @@ const Calculator = () => {
                       </HoverCardTrigger>
                       <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
                         <p className="text-sm">
-                          The total cost of the AI solution including licenses, setup, and training.
+                          Prospective solution costs associated with the AI use cases in scope (excludes maintenance, AI and telecommunication fees).
                         </p>
                       </HoverCardContent>
                     </HoverCard>
@@ -497,7 +499,7 @@ const Calculator = () => {
                         </HoverCardTrigger>
                         <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
                           <p className="text-sm">
-                            Return on investment = net savings / cost of AI
+                            Total 3-year savings minus the one-time cost of AI
                           </p>
                         </HoverCardContent>
                       </HoverCard>
@@ -520,7 +522,7 @@ const Calculator = () => {
                         </HoverCardTrigger>
                         <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
                           <p className="text-sm">
-                            Total savings before subtracting AI costs
+                            Total savings over 3 years before subtracting the one-time AI cost
                           </p>
                         </HoverCardContent>
                       </HoverCard>
@@ -543,7 +545,7 @@ const Calculator = () => {
                         </HoverCardTrigger>
                         <HoverCardContent className="w-80 bg-[#1A1D2B] border-white/10 text-white/80">
                           <p className="text-sm">
-                            Return on investment over 3 years
+                            Return on the one-time AI investment over 3 years
                           </p>
                         </HoverCardContent>
                       </HoverCard>
