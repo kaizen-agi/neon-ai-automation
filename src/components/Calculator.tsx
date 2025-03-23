@@ -487,7 +487,7 @@ const Calculator = () => {
                 <div className="glassmorphism rounded-xl p-4">
                   <div className="flex flex-col">
                     <div className="flex items-center mb-1">
-                      <span className="text-neon-purple text-4xl font-bold">${Math.round(savings.threeYears.cost - costOfAI).toLocaleString()}</span>
+                      <span className="text-neon-purple text-2xl sm:text-3xl font-bold">${Math.round(savings.threeYears.cost - costOfAI).toLocaleString()}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-white/70 text-sm">Net savings</span>
@@ -510,7 +510,7 @@ const Calculator = () => {
                 <div className="glassmorphism rounded-xl p-4">
                   <div className="flex flex-col">
                     <div className="flex items-center mb-1">
-                      <span className="text-neon-purple text-4xl font-bold">${Math.round(savings.threeYears.cost).toLocaleString()}</span>
+                      <span className="text-neon-purple text-2xl sm:text-3xl font-bold">${Math.round(savings.threeYears.cost).toLocaleString()}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-white/70 text-sm">Gross savings</span>
@@ -533,7 +533,7 @@ const Calculator = () => {
                 <div className="glassmorphism rounded-xl p-4">
                   <div className="flex flex-col">
                     <div className="flex items-center mb-1">
-                      <span className="text-neon-purple text-4xl font-bold">{Math.max(1, Math.round(savings.roi))}x</span>
+                      <span className="text-neon-purple text-2xl sm:text-3xl font-bold">{Math.max(1, Math.round(savings.roi))}x</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-white/70 text-sm">ROI</span>

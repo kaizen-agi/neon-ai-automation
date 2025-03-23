@@ -50,7 +50,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0C14] overflow-hidden">
+    <div className="min-h-screen bg-[#0A0C14] overflow-hidden font-poppins">
       <Navbar />
       <Hero />
       <Solutions />

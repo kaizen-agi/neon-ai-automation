@@ -148,7 +148,8 @@ export default {
 				'neon-text': '0 0 6px rgba(139, 92, 246, 0.6)'
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif']
+				sans: ['Inter', 'sans-serif'],
+				poppins: ['Poppins', 'sans-serif']
 			}
 		}
 	},
