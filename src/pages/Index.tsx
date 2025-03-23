@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Solutions from "@/components/Solutions";
 import Testimonials from "@/components/Testimonials";
-import Calculator from "@/components/Calculator";
+import Calculator from "@/components/calculator/Calculator";
 import UseCases from "@/components/UseCases";
 import Summary from "@/components/Summary";
 import CTA from "@/components/CTA";
